@@ -6,7 +6,7 @@ public class MemberDAO {
 	private Connection conn;
 	private PreparedStatement ps;
 	private static MemberDAO dao;
-	private final String URL = "jdbc:oracle:thin:@localhost:1521:XE";
+	private final String URL = "jdbc:oracle:thin:@211.238.142.124:1521:XE";
 	
 	public MemberDAO()
 	{
@@ -29,7 +29,7 @@ public class MemberDAO {
 	public void getConnection()
 	{
 		try {
-			conn = DriverManager.getConnection(URL,"hr","happy");
+			conn = DriverManager.getConnection(URL,"hr_1","happy");
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

@@ -1,5 +1,6 @@
 package com.sist.main;
 import java.awt.*;
+
 import java.net.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -9,7 +10,7 @@ import com.sist.vo.*;
 import java.util.List;
 
 import com.sist.commons.ImageChange;
-import com.sist.dao.FoodDAO;
+import com.sist.dao.*;
 public class HomePanel extends JPanel
 implements MouseListener,ActionListener
 {
@@ -23,7 +24,7 @@ implements MouseListener,ActionListener
 	int totalpage=0;
 	
 	//데이터베이스 연동 => FoodDAO
-	FoodDAO dao = FoodDAO.newInstance();
+	ProductDAO dao = ProductDAO.newInstance();
 	public HomePanel(ControlPanel cp)
 	{
 		setLayout(new BorderLayout());
@@ -55,16 +56,16 @@ implements MouseListener,ActionListener
 		{
 			//총페이지 읽기
 			totalpage = dao.foodTotalPage();
-			List<FoodVO> list = dao.FoodListData(curpage);
+			List<ProductVO> list = dao.ProductListData(curpage);
 			for(int i=0; i< list.size();i++)
 			{
-				FoodVO vo = list.get(i);
+				ProductVO vo = list.get(i);
 				try
 				{
-					URL url= new URL(vo.getPoster());
+					URL url= new URL(vo.getProduct_poster());
 					Image image=ImageChange.getImage(new ImageIcon(url), 200, 150);
 					imgs[i] = new JLabel(new ImageIcon(image));
-					imgs[i].setToolTipText(vo.getName()+"^"+vo.getFno());
+					imgs[i].setToolTipText(vo.getProduct_name()+"^"+vo.getProduct_no());
 					pan.add(imgs[i]);
 					//이벤트 등록
 					imgs[i].addMouseListener(this);
