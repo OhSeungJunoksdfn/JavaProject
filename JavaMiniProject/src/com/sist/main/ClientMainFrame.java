@@ -62,7 +62,7 @@ implements ActionListener,Runnable
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		try {
-			UIManager.setLookAndFeel("com.jtattoo.plaf.mcwin.McWinLookAndFeel");
+			UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
