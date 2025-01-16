@@ -169,7 +169,7 @@ implements ActionListener,Runnable
 	{
 		try
 		{
-			s=new Socket("localhost",5555);
+			s=new Socket("192.168.10.110",5555);
 			//서버연결
 			//서버로 전송
 			out=s.getOutputStream();

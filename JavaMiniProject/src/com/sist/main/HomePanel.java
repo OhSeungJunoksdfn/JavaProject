@@ -55,7 +55,7 @@ implements MouseListener,ActionListener
 		public void print()
 		{
 			//총페이지 읽기
-			totalpage = dao.foodTotalPage();
+			totalpage = dao.productTotalPage();
 			List<ProductVO> list = dao.ProductListData(curpage);
 			for(int i=0; i< list.size();i++)
 			{

@@ -59,7 +59,7 @@ public class ProductDAO {
 		{
 			getConnection();
 			String sql = "SELECT product_no,product_name,product_poster,num FROM (SELECT product_no,product_name,product_poster,rownum as num "
-					+ "FROM (SELECT /*+INDEX_ASC(product pk_produck)*/ product_no,product_name,product_poster "
+					+ "FROM (SELECT /*+INDEX_ASC(product pk_product)*/ product_no,product_name,product_poster "
 					+ "FROM product)) "
 					+ "WHERE num BETWEEN ? AND ?";
 			ps = conn.prepareStatement(sql);
@@ -86,7 +86,7 @@ public class ProductDAO {
 		
 		return list;
 	}
-	public int foodTotalPage()
+	public int productTotalPage()
 	{
 		int total =0;
 		try
