@@ -31,7 +31,9 @@ implements ActionListener,Runnable, MouseListener
 	MenuForm mf = new MenuForm(); // 포함 클래스 => 있는 그대로 사용
 	ControlPanel cp = new ControlPanel();
 	Login login = new Login();
+	Register register = new Register();
 	CardLayout card = new CardLayout();
+	
 	// 배치
 	
 	int selectRow=-1; // 테이블에서 선택이 안된 상태 
@@ -57,6 +59,10 @@ implements ActionListener,Runnable, MouseListener
 		login.b1.addActionListener(this);
 		login.b2.addActionListener(this);
 		login.pf.addActionListener(this);
+		login.b3.addActionListener(this);
+		
+		//회원가입
+		register.b3.addActionListener(this);
 		
 		mf.b6.addActionListener(this); // 채팅 
 		mf.b1.addActionListener(this); // 홈 
@@ -163,6 +169,17 @@ implements ActionListener,Runnable, MouseListener
 			System.exit(0); //프로그램 종료
 			
 		}
+		//회원가입으로 이동
+		else if(e.getSource()==login.b3)
+		{
+			login.setVisible(false);
+			register.setVisible(true);
+		}
+		else if(e.getSource()==register.b3)
+		{
+			login.setVisible(true);
+			register.setVisible(false);
+		}
 		else if(e.getSource()==login.b1 || e.getSource()==login.pf)
 		{
 			// 유효성 검사
@@ -200,6 +217,7 @@ implements ActionListener,Runnable, MouseListener
 				connection(vo);
 			}
 		}
+
 		else if(e.getSource()==cp.cp.b2)
 		{
 			if(selectRow==-1)
