@@ -25,8 +25,18 @@ public class ChatPanel extends JPanel {
 		
 		String[] col= {"아이디","이름","성별"};
 		String[][] row = new String[0][3];
-		model = new DefaultTableModel(row,col);
+		model=new DefaultTableModel(row,col)
+    	{
+
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				// TODO Auto-generated method stub
+				return false;
+			}
+    		
+    	};
 		table = new JTable(model);
+		table.getTableHeader().setReorderingAllowed(false);
 		JScrollPane js1=new JScrollPane(table);
 		
 		//배치
