@@ -244,10 +244,15 @@ implements ActionListener,Runnable, MouseListener
 		}
 		else if(e.getSource()==cp.cp.b1)
 		{
+			String msg=cp.cp.tf.getText();
 			if(selectRow==-1)
 			{
 				JOptionPane.showMessageDialog(this, 
 						"귓속말 보낼 대상을 선택하세요");
+				return;
+			}
+			if(msg.length()==0)
+			{
 				return;
 			}
 			
@@ -255,15 +260,13 @@ implements ActionListener,Runnable, MouseListener
 					  .toString();
 			
 			MemberVO vo=mDao.memberInfo(id);
-			
-			String info="이름:"+vo.getName()+"\n"
-					   +"성별:"+vo.getSex()+"\n"
-					   +"이메일:"+vo.getEmail()+"\n"
-					   +"생년월일:"+vo.getBirthday().toString()+"\n"
-					   +"주소:"+vo.getAddr1()+" "+vo.getAddr2() +"\n"
-					   +"등록일:"+vo.getRegdate().toString();
-			JOptionPane.showMessageDialog(this, info);
-			JOptionPane.showMessageDialog(this, "쪽지");
+			try
+			{
+			  out.write((Function.SENDMESSAGE+"|"
+					  	+id+"|"
+					  	+msg+"\n").getBytes());	
+			  cp.cp.ta.append("("+vo.getName()+"에게 귓속말) "+msg+"\n");
+			}catch(Exception ex){}
 			
 		}
 		// chat처리 
@@ -309,7 +312,7 @@ implements ActionListener,Runnable, MouseListener
 	{
 		try
 		{
-			s=new Socket("localhost",3355);
+			s=new Socket("localhost",5555);
 			//서버연결
 			//서버로 전송
 			out=s.getOutputStream();

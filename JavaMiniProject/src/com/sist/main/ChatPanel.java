@@ -20,7 +20,7 @@ public class ChatPanel extends JPanel {
 		JScrollPane js = new JScrollPane(ta)	;
 		
 		tf=new JTextField();
-		b1=new JButton("쪽지보내기");
+		b1=new JButton("귓속말 보내기");
 		b2 = new JButton("정보보기");
 		
 		String[] col= {"아이디","이름","성별"};

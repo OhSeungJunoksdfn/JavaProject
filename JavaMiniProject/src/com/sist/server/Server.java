@@ -34,7 +34,7 @@ public class Server implements Runnable{
 	// 접속을 받는다 
 	ServerSocket ss;
 	// 클라이언트 => 서버 => 연결선 (숫자 => PORT)
-	final int PORT=3355;
+	final int PORT=5555;
 	// port => 0~65535 
 	// 0~1023 알려진 포트 => 80 : HTTP 
 	// 23 : FTP , 25 : SMTP ...
@@ -167,6 +167,22 @@ public class Server implements Runnable{
 								  +name+"] "+st.nextToken());
 					  }
 					  break;
+					  case Function.SENDMESSAGE:
+					  {
+						  String targetId = st.nextToken();
+						  for(int i=0;i<waitVc.size();i++)
+						  {
+							  Client c=waitVc.get(i);
+							  if(c.id.equals(targetId))
+							  {
+								  String whisperMsg = st.nextToken();
+								  Whispher(Function.WAITCHAT+"|("
+										  +name+"의 귓속말"+") "+whisperMsg, c);
+							  }
+						  }
+						  
+					  }
+					  break;
 					  case Function.EXIT:
 					  {
 						  messageAll(Function.EXIT+"|"+id);
@@ -198,6 +214,13 @@ public class Server implements Runnable{
 		// synchronized => 동기화
 		// => async function  AJAX
 		// => sync function
+		public synchronized void Whispher(String msg,Client client)
+		{
+			try
+			{
+				client.out.write((msg+"\n").getBytes());
+			}catch(Exception ex) {}
+		}
 		public synchronized void messageTo(String msg)
 		{
 			// 신뢰성이 좋은 프로그램 => 안정성 / 속도가 느리다 
