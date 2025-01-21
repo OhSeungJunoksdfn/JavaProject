@@ -31,6 +31,7 @@ implements MouseListener,ActionListener
 		this.cp=cp;
 		pan.setLayout(new GridLayout(3,4,5,5));
 		add("Center",pan);
+		
 		b1 = new JButton("이전");
 		b2 = new JButton("다음");
 		JPanel p = new JPanel();

@@ -7,10 +7,14 @@ import java.awt.Image;
 import java.awt.Toolkit;
 
 import javax.swing.*;
+//화면 변경
 public class ControlPanel  extends JPanel {
 	HomePanel hp;
-	CardLayout card = new CardLayout();
 	ChatPanel cp;
+	GenrePanel gp;
+    FindPanel fp;
+    DetailPanel dp;
+	CardLayout card = new CardLayout();
 	
 	public ControlPanel() {
 		setLayout(card);
@@ -18,6 +22,12 @@ public class ControlPanel  extends JPanel {
 		add("HOME",hp);
 		cp = new ChatPanel(this);
 		add("CHAT",cp);
+		gp=new GenrePanel(this);
+    	add("PROD",gp);
+    	fp=new FindPanel(this);
+    	add("FIND",fp);
+    	dp=new DetailPanel(this);
+    	add("DETAIL",dp);
 		
 		
 	} 

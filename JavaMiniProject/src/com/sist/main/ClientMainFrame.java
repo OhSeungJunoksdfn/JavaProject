@@ -269,7 +269,7 @@ implements ActionListener,Runnable, MouseListener
 		}
 		else if(e.getSource()==mf.b2)
 		{
-			cp.card.show(cp, "FOOD");
+			cp.card.show(cp, "PROD");
 		}
 		else if(e.getSource()==mf.b3)
 		{
@@ -280,7 +280,7 @@ implements ActionListener,Runnable, MouseListener
 	{
 		try
 		{
-			s=new Socket("192.168.10.110",5555);
+			s=new Socket("localhost",3355);
 			//서버연결
 			//서버로 전송
 			out=s.getOutputStream();
