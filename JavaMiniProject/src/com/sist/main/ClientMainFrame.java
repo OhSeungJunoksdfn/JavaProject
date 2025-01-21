@@ -241,6 +241,30 @@ implements ActionListener,Runnable, MouseListener
 			JOptionPane.showMessageDialog(this, info);
 			
 		}
+		else if(e.getSource()==cp.cp.b1)
+		{
+			if(selectRow==-1)
+			{
+				JOptionPane.showMessageDialog(this, 
+						"귓속말 보낼 대상을 선택하세요");
+				return;
+			}
+			
+			String id=cp.cp.model.getValueAt(selectRow, 0)
+					  .toString();
+			
+			MemberVO vo=mDao.memberInfo(id);
+			
+			String info="이름:"+vo.getName()+"\n"
+					   +"성별:"+vo.getSex()+"\n"
+					   +"이메일:"+vo.getEmail()+"\n"
+					   +"생년월일:"+vo.getBirthday().toString()+"\n"
+					   +"주소:"+vo.getAddr1()+" "+vo.getAddr2() +"\n"
+					   +"등록일:"+vo.getRegdate().toString();
+			JOptionPane.showMessageDialog(this, info);
+			JOptionPane.showMessageDialog(this, "쪽지");
+			
+		}
 		// chat처리 
 		else if(e.getSource()==cp.cp.tf)
 		{
