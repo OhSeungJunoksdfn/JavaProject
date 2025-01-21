@@ -28,7 +28,7 @@ implements ActionListener,MouseListener
     {
     	this.cp=cp;
     	String[] col={
-        		"번호","","상품명","가격","할인","평점"
+        		"번호","","제품명","가격","할인","평점"
     	};
     	Object[][] row=new Object[0][6];
    	    model=new DefaultTableModel(row,col)

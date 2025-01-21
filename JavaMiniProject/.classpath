@@ -9,6 +9,7 @@
 	<classpathentry kind="lib" path="C:/gitDev/JTattoo-1.6.13.jar"/>
 	<classpathentry kind="lib" path="C:/gitDev/lombok-1.18.36.jar"/>
 	<classpathentry kind="lib" path="C:/gitDev/ojdbc8.jar"/>
-	<classpathentry kind="lib" path="C:/gitDev/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/gitDev/jsoup-1.18.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sist/Downloads/json-simple-1.1.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -290,7 +290,7 @@ implements ActionListener,Runnable, MouseListener
 	{
 		try
 		{
-			s=new Socket("192.168.10.110",3355);
+			s=new Socket("192.168.10.110",5555);
 			//서버연결
 			//서버로 전송
 			out=s.getOutputStream();
