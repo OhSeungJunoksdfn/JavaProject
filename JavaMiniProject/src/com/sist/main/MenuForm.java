@@ -14,7 +14,7 @@ public class MenuForm extends JPanel {
 	public JButton b5=new JButton("커뮤니티");
 	public JButton b6=new JButton("실시간 채팅");
 	public JButton b7=new JButton("실시간 뉴스");
-	//초기화 ==> 배치
+	//초기화 ==> 배치 
 	public MenuForm(){
 		setLayout(new GridLayout(1,5,10,10));
 		add(b1);add(b2);add(b3);add(b5);add(b6);add(b7);
