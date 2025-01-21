@@ -20,8 +20,8 @@ CONTENT	CLOB
  */
 @Data
 public class MemberVO {
-	private String id,pwd,name,email,sex,post,addr1,addr2,phone,content,msg;
-	private Date birthday,regdate;
+	private String id,pwd,name,email,sex,post,addr1,addr2,phone,content,msg,birthday;
+	private Date regdate;
 	
 	
 }

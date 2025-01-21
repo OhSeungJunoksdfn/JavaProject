@@ -68,8 +68,6 @@ implements ActionListener,Runnable, MouseListener
 		mf.b1.addActionListener(this); // 홈 
 		mf.b2.addActionListener(this); // 맛집
 		mf.b3.addActionListener(this); // 검색
-		mf.b7.addActionListener(this); // 뉴스 
-		mf.b5.addActionListener(this); // 커뮤니티
 		
 		// Chat => Socket 
 		cp.cp.tf.addActionListener(this);
@@ -243,33 +241,6 @@ implements ActionListener,Runnable, MouseListener
 			JOptionPane.showMessageDialog(this, info);
 			
 		}
-		else if(e.getSource()==cp.cp.b1)
-		{
-			String msg=cp.cp.tf.getText();
-			if(selectRow==-1)
-			{
-				JOptionPane.showMessageDialog(this, 
-						"귓속말 보낼 대상을 선택하세요");
-				return;
-			}
-			if(msg.length()==0)
-			{
-				return;
-			}
-			
-			String id=cp.cp.model.getValueAt(selectRow, 0)
-					  .toString();
-			
-			MemberVO vo=mDao.memberInfo(id);
-			try
-			{
-			  out.write((Function.SENDMESSAGE+"|"
-					  	+id+"|"
-					  	+msg+"\n").getBytes());	
-			  cp.cp.ta.append("("+vo.getName()+"에게 귓속말) "+msg+"\n");
-			}catch(Exception ex){}
-			
-		}
 		// chat처리 
 		else if(e.getSource()==cp.cp.tf)
 		{
@@ -304,14 +275,6 @@ implements ActionListener,Runnable, MouseListener
 		{
 			cp.card.show(cp, "FIND");
 		}
-		else if(e.getSource()==mf.b7)
-		{
-			cp.card.show(cp, "NP");
-		}
-		else if(e.getSource()==mf.b5)
-		{
-			cp.card.show(cp, "BLIST");
-		}
 	}
 	public void connection(MemberVO vo)
 	{
@@ -319,7 +282,7 @@ implements ActionListener,Runnable, MouseListener
 		{
 			s=new Socket("192.168.10.110",5555);
 			//서버연결
-			//서버로 전송
+			//서버로 전송p
 			out=s.getOutputStream();
 			//서버에서 값 받기
 			in = new BufferedReader(new InputStreamReader(s.getInputStream()));

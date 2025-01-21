@@ -1,6 +1,7 @@
 package com.sist.dao;
 //로그인 /회원가입 / 회원 탈퇴 / 회원수정 => 오라클 연결
 import java.sql.*;
+import java.util.Date;
 import com.sist.vo.*;
 public class MemberDAO {
 	private Connection conn;
@@ -125,7 +126,7 @@ public class MemberDAO {
 		   vo.setAddr1(rs.getString(4));
 		   vo.setAddr2(rs.getString(5));
 		   vo.setRegdate(rs.getDate(6));
-		   vo.setBirthday(rs.getDate(7));
+		   vo.setBirthday(rs.getString(7));
 		   rs.close();
 	   }catch(Exception ex)
 	   {
@@ -138,6 +139,63 @@ public class MemberDAO {
 	   return vo;
    }
 	//2. 회원가입
+   /*
+ID	VARCHAR2(20 BYTE)
+PWD	VARCHAR2(10 BYTE)
+NAME	VARCHAR2(51 BYTE)
+EMAIL	VARCHAR2(100 BYTE)
+SEX	CHAR(6 BYTE)
+BIRTHDAY	DATE
+POST	VARCHAR2(7 BYTE)
+ADDR1	VARCHAR2(200 BYTE)
+ADDR2	VARCHAR2(100 BYTE)
+PHONE	VARCHAR2(13 BYTE)
+REGDATE	DATE
+CONTENT	CLOB
+    */
+   
+   public boolean createMember(MemberVO vo) {
+	   boolean bCheck = true;
+	   try {
+		getConnection();
+		
+		String sql = "SELECT COUNT(*) FROM member WHERE id=?";
+		ps = conn.prepareStatement(sql);
+		ps.setString(1, vo.getId());
+		ResultSet rs = ps.executeQuery();
+		rs.next();
+		if(rs.getInt(1)==1) {
+			bCheck=false;
+			return bCheck;
+		}
+		rs.close();
+		
+		sql= "INSERT INTO member(id,pwd,name,email,sex,birthday,post,addr1,addr2,phone,regdate,content) "
+				+ "VALUES(?,?,?,?,?,TO_CHAR(?,YY/MM/DD),?,?,?,?,SYSDATE,?)";
+		ps=conn.prepareStatement(sql);
+		ps.setString(1, vo.getId());
+		ps.setString(2,vo.getPwd());
+		ps.setString(3, vo.getName());
+		ps.setString(4, vo.getEmail());
+		ps.setString(5, vo.getSex());
+		ps.setString(6, vo.getBirthday());
+		ps.setString(7, vo.getPost());
+		ps.setString(8, vo.getAddr1());
+		ps.setString(9, vo.getAddr2());
+		ps.setString(10, vo.getPhone());
+		ps.setString(11, vo.getContent());
+		ps.executeUpdate();
+
+		
+	} catch (Exception e) {
+		// TODO: handle exception
+		e.printStackTrace();
+	}finally {
+		disConnection();
+	}
+	   return bCheck;
+   }
+   
 	//3. 회원수정
 	//4. 회원탈퇴
 }
