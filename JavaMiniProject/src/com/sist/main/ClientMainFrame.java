@@ -68,6 +68,7 @@ implements ActionListener,Runnable, MouseListener
 		mf.b1.addActionListener(this); // 홈 
 		mf.b2.addActionListener(this); // 맛집
 		mf.b3.addActionListener(this); // 검색
+		mf.b7.addActionListener(this); // 뉴스 
 		
 		// Chat => Socket 
 		cp.cp.tf.addActionListener(this);
@@ -298,6 +299,10 @@ implements ActionListener,Runnable, MouseListener
 		else if(e.getSource()==mf.b3)
 		{
 			cp.card.show(cp, "FIND");
+		}
+		else if(e.getSource()==mf.b7)
+		{
+			cp.card.show(cp, "NP");
 		}
 	}
 	public void connection(MemberVO vo)

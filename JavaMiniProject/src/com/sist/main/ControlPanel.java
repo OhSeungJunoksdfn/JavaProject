@@ -14,8 +14,8 @@ public class ControlPanel  extends JPanel {
 	GenrePanel gp;
     FindPanel fp;
     DetailPanel dp;
+    NewsPanel np;
 	CardLayout card = new CardLayout();
-	
 	public ControlPanel() {
 		setLayout(card);
 		hp=new HomePanel(this);
@@ -28,7 +28,8 @@ public class ControlPanel  extends JPanel {
     	add("FIND",fp);
     	dp=new DetailPanel(this);
     	add("DETAIL",dp);
-		
+    	np=new NewsPanel(this);
+    	add("NP",np);
 		
 	} 
 	
