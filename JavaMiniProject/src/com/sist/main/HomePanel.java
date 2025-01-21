@@ -5,6 +5,7 @@ import java.net.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 
 import com.sist.vo.*;
 import java.util.List;
@@ -17,6 +18,8 @@ implements MouseListener,ActionListener
 	ControlPanel cp;
 	JPanel pan = new JPanel();
 	JButton b1,b2; //이전 ,다음
+	JTable table; // 모양관리 
+    DefaultTableModel model; // 데이터 관리
 	JLabel la=new JLabel("0 page / 0 pages");
 	JLabel[] imgs = new JLabel[12];
 	
@@ -78,8 +81,23 @@ implements MouseListener,ActionListener
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-
-	}
+				for(int i=0;i<imgs.length;i++)
+				{
+					if(e.getSource()==imgs[i])
+					{
+						if(e.getClickCount()==2)
+						{
+							String product_no=imgs[i].getToolTipText();
+							product_no=product_no.substring(product_no.lastIndexOf("^")+1);
+							ProductVO vo=
+								dao.DetailData(Integer.parseInt(product_no));
+							cp.dp.detailPrint(1, vo);
+							cp.card.show(cp, "DETAIL");
+						}
+					}
+				}
+			}
+	
 
 	@Override
 	public void mousePressed(MouseEvent e) {

@@ -66,7 +66,7 @@ implements ActionListener
   	 add(deliverLa);add(deliver);
   	   	 
   	 
-  	 hitLa=new JLabel("평점");
+  	 hitLa=new JLabel("조회수");
   	 hit=new JLabel();
   	 hitLa.setBounds(330, 420, 80, 30);
     hit.setBounds(415, 420, 250, 30);
