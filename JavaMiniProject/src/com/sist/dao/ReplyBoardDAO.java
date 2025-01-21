@@ -487,13 +487,7 @@ public class ReplyBoardDAO {
 			{
 				bCheck=true;
 				
-				sql="SELECT depth FROM replyBoard "
-						   +"WHERE no="+root;
-				ps=conn.prepareStatement(sql);
-				rs=ps.executeQuery();
-				rs.next();
-				int d=rs.getInt(1);
-				rs.close();
+				
 				// 삭제 
 				if(depth==0) // 답변이 없는 경우
 				{
