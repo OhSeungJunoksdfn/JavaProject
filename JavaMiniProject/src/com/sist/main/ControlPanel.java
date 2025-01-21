@@ -15,6 +15,12 @@ public class ControlPanel  extends JPanel {
     FindPanel fp;
     DetailPanel dp;
     NewsPanel np;
+    BoardList bList;
+    BoardInsert bInsert;
+    BoardDetail bDetail;
+    BoardUpdate bUpdate;
+    BoardReply bReply;
+    BoardDelete bDelete;
 	CardLayout card = new CardLayout();
 	public ControlPanel() {
 		setLayout(card);
@@ -30,7 +36,19 @@ public class ControlPanel  extends JPanel {
     	add("DETAIL",dp);
     	np=new NewsPanel(this);
     	add("NP",np);
-		
+    	bList=new BoardList(this);
+    	add("BLIST",bList);
+    	bInsert=new BoardInsert(this);
+    	add("BINSERT",bInsert);
+    	bDetail=new BoardDetail(this);
+    	add("BDETAIL",bDetail);
+    	bUpdate=new BoardUpdate(this);
+    	add("BUPDATE",bUpdate);
+    	bReply=new BoardReply(this);
+    	add("BREPLY",bReply);
+    	bDelete=new BoardDelete(this); // => jsp(메소드) => URL주소
+    	// delete.jsp?no=10&pwd=1234 => JSP에서는 메소드를 만들 수 없다 
+    	add("BDELETE",bDelete);
 	} 
 	
 
